@@ -1,2 +1,64 @@
-# NASA-NSC-BAC
-A Broken Access Control (BAC) vulnerability was discovered in the NASA Safety Center (NSC) portal.
+# Vulnerability Research: NASA NSC (NASA Safety Center)
+## Unauthorized Access to Internal Portal via Parameter Manipulation
+
+###  Metadata
+| Attribute | Value |
+| :--- | :--- |
+| **Target** | `nsc.nasa.gov` |
+| **Category** | Web Application |
+| **Vulnerability** | Broken Access Control (BAC) |
+| **Priority** | P3 (Medium) |
+| **Status** | Resolved |
+
+---
+
+###   Executive Summary
+During a security assessment of the **NASA Safety Center (NSC)** web infrastructure, I identified a logic flaw that allowed external users to bypass "NASA-Only" network restrictions. By manipulating specific URL parameters, the application's access control mechanism was tricked into identifying a public request as an internal, authorized session. This provided unauthorized access to restricted resources intended solely for NASA personnel.
+
+---
+
+###   Vulnerability Details
+The application implements a security gateway that checks if a user is accessing the site from a public network. If the user is on a public network, the application serves a blocking notice:
+> *"You are accessing this site from a public network. This is a NASA-Only site."*
+
+However, the authorization logic was found to be dependent on client-side controllable parameters rather than server-side session validation or robust network origin verification. By appending a custom parameter, the application grants the user "Internal" status.
+
+---
+
+###   Steps to Reproduce
+1. **Initial Access:**
+   Navigate to a restricted resource via a public connection:
+   `https://nsc.nasa.gov/resources/annual-reports`
+2. **Observe Restriction:**
+   The site displays the notice: *"You are accessing this site from a public network. This is a NASA-Only site."*
+3. **Inject Bypass Payload:**
+   Modify the URL on step number one by appending the custom query parameters.
+
+4. **Execution:**
+   Navigate to the crafted URL.
+   
+6. **Confirmation:**
+   The restriction is bypassed, and the internal NASA resources are now accessible.
+
+---
+
+###   Impact
+* **Information Disclosure:** Unauthorized access to internal documentation and reports not cleared for public release.
+* **Perimeter Failure:** This bypass renders the network-based access restrictions obsolete.
+* **Security Circumvention:** Allows any external actor to masquerade as internal NASA personnel by simply modifying a URL string.
+
+---
+
+###   Remediation
+The vulnerability was remediated by enforcing access controls on the server side.
+- **Recommendation:** Authorization should be based on verified session tokens or authenticated network headers (e.g., VPN headers) rather than trust-based query strings.
+- **Result:** NASA has since patched this vulnerability.
+
+---
+
+###   References
+- **VRT Mapping:** Broken Access Control
+- **Program:** NASA Vulnerability Disclosure Program (VDP)
+
+---
+*Disclaimer: This report is for portfolio purposes. The vulnerability has been formally reported to and patched by the NASA security team.*
