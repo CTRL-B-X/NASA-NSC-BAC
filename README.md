@@ -27,37 +27,43 @@ By appending a specific parameter, an external user could force the application 
 
 ###   Steps to Reproduce
 1. **Initial Access:**
-   Navigate to a restricted resource via a public connection:
-   `https://nsc.nasa.gov/resources/annual-reports`
+   From a public internet connection, navigate to a restricted resource:
+https://nsc.nasa.gov/resources/annual-reports
 2. **Observe Restriction:**
-   The site displays the notice: *"You are accessing this site from a public network. This is a NASA-Only site."*
-3. **Inject Bypass Payload:**
-   Modify the URL on step number one by appending the custom query parameters.
+   The application correctly enforces the network check and displays the blocking notice:
+"You are accessing this site from a public network. This is a NASA-Only site."
+3. **Inject Bypass:**
+   Modify the URL by appending the bypass parameter (example redacted for safety):
+https://nsc.nasa.gov/resources/annual-reports?**[REDACTED_PARAMETER]**.
 
 4. **Execution:**
-   Navigate to the crafted URL.
+   Load the crafted URL.
    
 6. **Confirmation:**
-   The restriction is bypassed, and the internal NASA resources are now accessible.
+   The blocking notice is bypassed, and the internal NASA resources (such as annual reports and documentation) load successfully.
 
 ---
 
 ###   Impact
-* **Information Disclosure:** Unauthorized access to internal documentation and reports not cleared for public release.
-* **Perimeter Failure:** This bypass renders the network-based access restrictions obsolete.
-* **Security Circumvention:** Allows any external actor to masquerade as internal NASA personnel by simply modifying a URL string.
+* **Information Disclosure:** Unauthorized external users could view internal documentation and reports that were not cleared for public release, potentially exposing non-public operational or safety-related insights.
+* **Perimeter Failure:** The bypass completely neutralized the intended network-based access restrictions, rendering the "NASA-Only" protection ineffective.
+* **Security Circumvention:** Any external actor could masquerade as internal NASA personnel simply by modifying a URL parameter, undermining the site's access control model.
 
 ---
 
 ###   Remediation
-The vulnerability was remediated by enforcing access controls on the server side.
-- **Recommendation:** Authorization should be based on verified session tokens or authenticated network headers (e.g., VPN headers) rather than trust-based query strings.
-- **Result:** NASA has since patched this vulnerability.
+The vulnerability was successfully remediated by NASA through proper enforcement of access controls on the server side.
+- **Recommendation:** Authorization decisions should never rely on client-controlled data such as query strings. Instead, implement:
+
+Verified session tokens or JWT claims.
+Authenticated network headers (e.g., VPN or internal proxy headers).
+Strict server-side validation with a deny-by-default approach.
+- **Result:** NASA has since patched this vulnerability following responsible disclosure via their Vulnerability Disclosure Program.
 
 ---
 
 ###   References
-- **VRT Mapping:** Broken Access Control
+- **VRT Mapping:** Broken Access Control (CWE-284)
 - **Program:** NASA Vulnerability Disclosure Program (VDP)
 
 ---
