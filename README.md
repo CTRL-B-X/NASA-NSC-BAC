@@ -44,9 +44,9 @@ https://nsc.nasa.gov/resources/annual-reports?**[REDACTED_PARAMETER]**.
 NASA successfully remediated the vulnerability by properly enforcing access controls on the server side.
 - **Recommendation:** Authorization decisions should never rely on client-controlled data such as query strings. Instead, implement:
 
-Verified session tokens or JWT claims.
-Authenticated network headers (e.g., VPN or internal proxy headers).
-Strict server-side validation with a deny-by-default approach.
+   Verified session tokens or JWT claims.
+   Authenticated network headers (e.g., VPN or internal proxy headers).
+   Strict server-side validation with a deny-by-default approach.
 - **Result:** NASA has since patched this vulnerability following responsible disclosure via their Vulnerability Disclosure Program.
 
 ##   References
