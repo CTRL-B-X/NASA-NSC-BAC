@@ -27,7 +27,7 @@ https://nsc.nasa.gov/resources/annual-reports
 "You are accessing this site from a public network. This is a NASA-Only site."
 3. **Inject Bypass:**
    Modify the URL by appending the bypass parameter (example redacted for safety):
-https://nsc.nasa.gov/resources/annual-reports?**[REDACTED_PARAMETER]**.
+https://nsc.nasa.gov/resources/annual-reports?[REDACTED_PARAMETER].
 
 4. **Execution:**
    Load the crafted URL.
