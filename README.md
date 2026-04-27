@@ -41,7 +41,7 @@ https://nsc.nasa.gov/resources/annual-reports?[REDACTED_PARAMETER].
 - **Security Circumvention:** Any external actor could masquerade as internal NASA personnel simply by modifying a URL parameter, undermining the site's access control model.
 
 ##   Remediation
-NASA successfully remediated the vulnerability by properly enforcing access controls on the server side.
+NASA successfully remediated the vulnerability by properly enforcing access controls on the server side. NASA should assume all network origins are untrusted. Access to 'NASA-Only' resources should be gated by Identity and Access Management (IAM) rather than environmental variables or URL state.
 
 **Recommendation**: Authorization decisions should never rely on client-controlled data such as query strings. Instead, implement:
 
