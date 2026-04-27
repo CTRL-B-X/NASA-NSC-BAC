@@ -36,18 +36,20 @@ https://nsc.nasa.gov/resources/annual-reports?**[REDACTED_PARAMETER]**.
    The blocking notice is bypassed, and the internal NASA resources (such as annual reports and documentation) load successfully.
 
 ##   Impact
-* **Information Disclosure:** Unauthorized external users could view internal documentation and reports that were not cleared for public release, potentially exposing non-public operational or safety-related insights.
-* **Perimeter Failure:** The bypass completely neutralized the intended network-based access restrictions, rendering the "NASA-Only" protection ineffective.
-* **Security Circumvention:** Any external actor could masquerade as internal NASA personnel simply by modifying a URL parameter, undermining the site's access control model.
+- **Information Disclosure:** Unauthorized external users could view internal documentation and reports that were not cleared for public release, potentially exposing non-public operational or safety-related insights.
+- **Perimeter Failure:** The bypass completely neutralized the intended network-based access restrictions, rendering the "NASA-Only" protection ineffective.
+- **Security Circumvention:** Any external actor could masquerade as internal NASA personnel simply by modifying a URL parameter, undermining the site's access control model.
 
 ##   Remediation
 NASA successfully remediated the vulnerability by properly enforcing access controls on the server side.
-- **Recommendation:** Authorization decisions should never rely on client-controlled data such as query strings. Instead, implement:
 
-   Verified session tokens or JWT claims.
-   Authenticated network headers (e.g., VPN or internal proxy headers).
-   Strict server-side validation with a deny-by-default approach.
-- **Result:** NASA has since patched this vulnerability following responsible disclosure via their Vulnerability Disclosure Program.
+## Recommendation: Authorization decisions should never rely on client-controlled data such as query strings. Instead, implement:
+
+   - Verified session tokens or JWT claims.
+   - Authenticated network headers (e.g., VPN or internal proxy headers).
+   - Strict server-side validation with a deny-by-default approach.
+
+**Result:** NASA has since patched this vulnerability following responsible disclosure via their Vulnerability Disclosure Program.
 
 ##   References
 - **VRT Mapping:** Broken Access Control (CWE-284)
