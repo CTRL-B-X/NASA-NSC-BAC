@@ -32,7 +32,7 @@ https://nsc.nasa.gov/resources/annual-reports?**[REDACTED_PARAMETER]**.
 4. **Execution:**
    Load the crafted URL.
    
-6. **Confirmation:**
+5. **Confirmation:**
    The blocking notice is bypassed, and the internal NASA resources (such as annual reports and documentation) load successfully.
 
 ##   Impact
@@ -43,7 +43,7 @@ https://nsc.nasa.gov/resources/annual-reports?**[REDACTED_PARAMETER]**.
 ##   Remediation
 NASA successfully remediated the vulnerability by properly enforcing access controls on the server side.
 
-## Recommendation: Authorization decisions should never rely on client-controlled data such as query strings. Instead, implement:
+**Recommendation**: Authorization decisions should never rely on client-controlled data such as query strings. Instead, implement:
 
    - Verified session tokens or JWT claims.
    - Authenticated network headers (e.g., VPN or internal proxy headers).
