@@ -33,7 +33,7 @@ https://nsc.nasa.gov/resources/annual-reports?[REDACTED_PARAMETER].
    Load the crafted URL.
    
 5. **Confirmation:**
-   The blocking notice is bypassed, and the internal NASA resources (such as annual reports and documentation) load successfully.
+   The blocking notice is bypassed, and the internal NASA resources (such as annual reports and documentation) load successfully. NASA should assume all network origins are untrusted. Access to 'NASA-Only' resources should be gated by Identity and Access Management (IAM) rather than environmental variables or URL state.
 
 ##   Impact
 - **Information Disclosure:** Unauthorized external users could view internal documentation and reports that were not cleared for public release, potentially exposing non-public operational or safety-related insights.
