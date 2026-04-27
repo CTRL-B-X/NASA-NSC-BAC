@@ -18,7 +18,7 @@ During a security assessment of the **NASA Safety Center (NSC)** web infrastruct
 ---
 
 ###   Vulnerability Details
-The NASA Safety Center (NSC) web application implemented a security gateway intended to restrict access to internal resources based on network origin. When accessed from a public (non-NASA) network, the site correctly displayed a blocking notice:
+The **NASA Safety Center (NSC)** web application implemented a security gateway intended to restrict access to internal resources based on network origin. When accessed from a public (non-NASA) network, the site correctly displayed a blocking notice:
 "You are accessing this site from a public network. This is a NASA-Only site."
 However, the authorization logic was fundamentally flawed. Instead of performing robust server-side validation (such as checking authenticated session tokens, verified VPN headers, or trusted network origin indicators), the application derived the user's "internal" or "public" status primarily from client-controllable query parameters.
 By appending a specific parameter, an external user could force the application to treat the request as originating from an authorized internal NASA network. This represents a classic Broken Access Control issue stemming from improper trust in client-supplied data.
