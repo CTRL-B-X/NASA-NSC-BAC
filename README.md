@@ -1,5 +1,4 @@
 # Vulnerability Research: Broken Access Control in NASA Safety Center (nsc.nasa.gov) – Bypassing NASA-Only Network Restrictions via Client-Controlled Parameter Manipulation (P3, Patched)
-## Unauthorized Access to Internal Portal via Parameter Manipulation
 
 ###  Metadata
 | Attribute | Value |
