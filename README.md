@@ -12,7 +12,8 @@
 ---
 
 ###   Executive Summary
-During a security assessment of the **NASA Safety Center (NSC)** web infrastructure, I identified a logic flaw that allowed external users to bypass "NASA-Only" network restrictions. By manipulating specific URL parameters, the application's access control mechanism was tricked into identifying a public request as an internal, authorized session. This provided unauthorized access to restricted resources intended solely for NASA personnel.
+
+During a security assessment of the **NASA Safety Center (NSC)** web infrastructure, I identified a logic flaw while testing network-based access controls from a public internet connection. The application relied on client-controllable URL parameters to determine whether a request originated from an internal NASA network or the public internet. By manipulating a specific query parameter, the access control mechanism could be tricked into granting "Internal" status to an external request. This bypass allowed unauthorized access to restricted resources intended solely for NASA personnel.
 
 ---
 
